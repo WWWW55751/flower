@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鲜花科普网站</title>
+    <link rel="stylesheet" href="css/flower.css">
+</head>
+<body onload="initMatchGame()">
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="#home" class="logo">
+                        <img src="images/flowerlogo.png" alt="花知屋" class="logo-image">
+                        <span class="logo-text">花知网</span>
+                    </a>
+                    <button class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="切换导航">
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">首页</a></li>
+                    <li><a href="#flowerGrid" class="nav-link">花库</a></li>
+                    <li><a href="collection.html" class="nav-link">分类与收藏</a></li>
+                    <li><a href="care.html" class="nav-link">植物养护指南</a></li>
+                    <li><a href="#quiz" class="nav-link">小测试</a></li>
+                    <li><a href="#about" class="nav-link">关于</a></li>
+                    <li><a href="#contact" class="nav-link">联系</a></li>
+                </ul>
+            </nav>
+            <div class="header-main" id="home">
+                <h1>
+                    <img src="images/flowernav.png" alt="装饰图标" class="header-icon">
+                    鲜花科普网站
+                    <img src="images/flowernav.png" alt="装饰图标" class="header-icon">
+                </h1>
+                <p class="subtitle">探索大自然的美丽奥秘，了解每一朵花的故事</p>
+            </div>
+        </header>
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索鲜花名称...">
+            <button class="search-btn" onclick="searchFlowers()">搜索</button>
+        </div>
+        <div class="flower-grid" id="flowerGrid"></div>
+        <section id="rateRank" class="rate-rank-section">
+            <h2 class="rank-title">🌸 最受欢迎花榜</h2>
+            <ol id="topList" class="rank-list"></ol>
+        </section>
+        <div id="pagination" style="display:flex;gap:8px;align-items:center;justify-content:center;margin:18px 0;">
+        </div>
+        <section class="match-game-section">
+            <div class="match-difficulty">
+                难度：
+                <select id="diffSelect" onchange="initMatchGame()">
+                    <option value="easy">简单 4×4</option>
+                    <option value="medium">中等 6×6</option>
+                    <option value="hard">困难 8×8</option>
+                </select>
+                <span id="curBestBar" class="best-tag">当前战绩：最短步数 - | 最快时间 -</span>
+            </div>
+            <div class="match-challenge">
+                <label>
+                    <input type="checkbox" id="challengeMode" onchange="toggleChallenge()">
+                    倒计时挑战
+                </label>
+                <span id="countdownDisplay" class="countdown-display"></span>
+            </div>
+            <h2>花卉配对小游戏</h2>
+            <div class="match-status">
+                <span>步数：<span id="matchMoves">0</span></span>
+                <span>用时：<span id="matchTimer">0</span> 秒</span>
+                <button class="search-btn" onclick="initMatchGame()">重新开始</button>
+            </div>
+            <div id="matchBoard" class="match-board"></div>
+            <div id="matchWin" class="match-win hidden">🎉 全部配对成功！
+                <button class="search-btn" onclick="initMatchGame()">再玩一次</button>
+            </div>
+        </section>
+        <div class="quiz-section" id="quiz">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;"> 鲜花知识小测试</h2>
+            <div class="quiz-question" id="quizQuestion">哪种花被称为"花中之王"？</div>
+            <div class="quiz-options" id="quizOptions">
+                <div class="quiz-option" onclick="checkAnswer(this, 'A')">A. 玫瑰</div>
+                <div class="quiz-option" onclick="checkAnswer(this, 'B')">B. 牡丹</div>
+                <div class="quiz-option" onclick="checkAnswer(this, 'C')">C. 梅花</div>
+                <div class="quiz-option" onclick="checkAnswer(this, 'D')">D. 菊花</div>
+            </div>
+            <div class="quiz-result hidden" id="quizResult"></div>
+            <button class="search-btn" onclick="nextQuestion()" style="margin-top: 15px;">下一题</button>
+        </div>
+        <section id="about" class="about-section-simple">
+            <div class="container">
+                <h2 class="section-title">关于我们</h2>
+                <div class="about-content-simple">
+                    <div class="about-text-simple">
+                        <p>欢迎来到<span class="highlight">鲜花科普网</span>，您身边的鲜花知识专家！</p>
+                        <p>我们致力于为您提供最全面、最有趣的鲜花科普内容，让您在欣赏鲜花美丽的同时，深入了解它们的生长习性、文化内涵和养护技巧。</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <img src="/images/icon/icon1.png" alt="丰富的鲜花品种库" class="icon-image">
+                                </div>
+                                <div class="feature-text">丰富的鲜花品种库</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <img src="/images/icon/icon2.png" alt="专业的科普知识" class="icon-image">
+                                </div>
+                                <div class="feature-text">专业的科普知识</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <img src="/images/icon/icon4.png" alt="有趣的互动测试" class="icon-image">
+                                </div>
+                                <div class="feature-text">有趣的互动测试</div>
+                            </div>
+                        </div>
+                        <p>无论您是鲜花爱好者、园艺新手还是专业人士，都能在这里找到您需要的信息。让我们一起探索鲜花的奇妙世界，感受大自然的美好馈赠！</p>
+                    </div>
+                    <div class="about-image-simple">
+                        <img src="/images/meigui.jpg" alt="鲜花科普网" class="about-main-image" id="mainImage">
+                        <div class="about-gallery">
+                            <img src="/images/haitang.jpg" alt="海棠" class="gallery-image"
+                                data-fullsize="/images/haitang.jpg">
+                            <img src="/images/yinghua.jpg" alt="樱花" class="gallery-image"
+                                data-fullsize="/images/yinghua.jpg">
+                            <img src="/images/fengxinzi.png" alt="风信子" class="gallery-image"
+                                data-fullsize="/images/fengxinzi.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon5.png" alt="邮箱" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>邮箱</h3>
+                                <p>contact@flowerworld.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon6.png" alt="电话" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>电话</h3>
+                                <p>123-4567-8910</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon7.png" alt="地址" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>地址</h3>
+                                <p>北京市朝阳区花卉大道123号</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon8.png" alt="网站" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>网站</h3>
+                                <p>www.flowerworld.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>发送消息</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">主题</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">发送消息</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div id="modalTags"></div>
+        </div>
+    </div>
+    <div id="dailyFlowerWidget" class="daily-widget">
+        <button class="daily-close" onclick="this.parentElement.style.display='none'">✖</button>
+        <button class="daily-settings" onclick="toggleDailySide()" title="切换左右">⚙️</button>
+        <button class="daily-reset" onclick="resetDailyPos()" title="恢复默认位置">↺</button>
+        <img id="dailySideImage" src="" alt="">
+        <div class="daily-side-info">
+            <div id="dailySideTitle"></div>
+            <button class="daily-side-btn" onclick="openModal(dailyFlowerData)">查看</button>
+        </div>
+    </div>
+    <div id="backTop" class="back-top" title="返回顶部">▲</div>
+    <div id="petalContainer" class="petal-container"></div>
+    <script src="js/flower.js"></script>
+</body>
+</html>

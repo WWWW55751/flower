@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花知网 - 分类与收藏</title>
+    <link rel="stylesheet" href="css/flower.css">
+    <link rel="stylesheet" href="css/collection.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="#" class="logo">
+                        <img src="images/flowerlogo.png" alt="花知屋" class="logo-image">
+                        <span class="logo-text">花知网</span>
+                    </a>
+                    <button class="nav-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="切换导航">
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="flower.html" class="nav-link">首页</a></li>
+                    <li><a href="#" class="nav-link active">分类与收藏</a></li>
+                    <li><a href="care.html" class="nav-link">植物养护指南</a></li>
+                    <li><a href="flower.html#quiz" class="nav-link">小测试</a></li>
+                    <li><a href="flower.html#about" class="nav-link">关于</a></li>
+                    <li><a href="flower.html#contact" class="nav-link">联系</a></li>
+                </ul>
+            </nav>
+            <div class="header-main" id="home">
+                <h1>
+                    <img src="images/flowernav.png" alt="装饰图标" class="header-icon">
+                    鲜花科普网站
+                    <img src="images/flowernav.png" alt="装饰图标" class="header-icon">
+                </h1>
+                <p class="subtitle">探索大自然的美丽奥秘，了解每一朵花的故事</p>
+            </div>
+        </header>
+        <h1 class="main-title">分类与收藏</h1>
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索鲜花名称...">
+            <button class="search-btn" onclick="searchFlowers()">搜索</button>
+        </div>
+        <section class="content-section" id="categories">
+            <h2 style="color: #2c3e50; margin-bottom: 12px;">分类筛选</h2>
+            <div class="category-group">
+                <div class="category-title">按花期：</div>
+                <div id="seasonChips" class="chips"></div>
+            </div>
+            <div class="category-group" style="margin-top:12px;">
+                <div class="category-title">按标签：</div>
+                <div id="tagChips" class="chips"></div>
+            </div>
+            <div style="margin-top:12px;">
+                <button class="clear-btn" id="clearCategoryBtn">清除分类</button>
+            </div>
+        </section>
+        <div id="blindBoxBanner"></div>
+        <div class="flower-grid" id="flowerGrid">
+        </div>
+        <section id="rateRank" class="rate-rank-section">
+            <h2>🌸 最受欢迎花榜</h2>
+            <ol id="topList"></ol>
+        </section>
+        <div id="pagination" style="display:flex;gap:8px;align-items:center;justify-content:center;margin:18px 0;"></div>
+        <section class="content-section" id="favorites">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">我的收藏</h2>
+            <div class="flower-grid" id="favoritesGrid">
+            </div>
+            <div id="emptyFavorites" style="text-align: center; padding: 40px; color: #7f8c8d;">
+                您还没有收藏任何鲜花，快去浏览并收藏喜欢的鲜花吧~
+            </div>
+        </section>
+    </div>
+    <script src="js/flower.js"></script>
+</body>
+</html>

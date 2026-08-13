@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花卉养护指南 | 花知网</title>
+    <link rel="stylesheet" href="css/flower.css">
+    <link rel="stylesheet" href="css/care.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <a href="flower.html" class="logo">
+                        <img src="images/flowerlogo.png" alt="花知屋" class="logo-image">
+                        <span class="logo-text">花知网</span>
+                    </a>
+                    <button class="nav-toggle" aria-controls="navMenu" aria-expanded="false">
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="flower.html" class="nav-link">首页</a></li>
+                    <li><a href="collection.html" class="nav-link">分类与收藏</a></li>
+                    <li><a href="#" class="nav-link active">植物养护指南</a></li>
+                    <li><a href="flower.html#quiz" class="nav-link">小测试</a></li>
+                    <li><a href="flower.html#about" class="nav-link">关于</a></li>
+                    <li><a href="flower.html#contact" class="nav-link">联系</a></li>
+                </ul>
+            </nav>
+            <div class="header-main">
+                <h1><img src="images/flowernav.png" class="header-icon">花卉养护指南<img src="images/flowernav.png"
+                        class="header-icon"></h1>
+                <p class="subtitle">浇水、光照、温度、施肥一站式查询</p>
+            </div>
+        </header>
+        <section class="care-filter">
+            <div class="filter-group">
+                <label>养护难度</label>
+                <select id="diffFilter">
+                    <option value="all">全部</option>
+                    <option value="容易">容易</option>
+                    <option value="中等">中等</option>
+                    <option value="困难">困难</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>光照需求</label>
+                <select id="lightFilter">
+                    <option value="all">全部</option>
+                    <option value="全日照">全日照</option>
+                    <option value="半阴">半阴</option>
+                    <option value="明亮散射光">明亮散射光</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>浇水频率</label>
+                <select id="waterFilter">
+                    <option value="all">全部</option>
+                    <option value="保持湿润">保持湿润</option>
+                    <option value="见干见湿">见干见湿</option>
+                    <option value="耐旱">耐旱</option>
+                </select>
+            </div>
+            <button class="clear-filter-btn" id="clearFilter">清除筛选</button>
+        </section>
+        <div class="care-grid" id="careGrid"></div>
+        <div class="modal" id="careModal">
+            <div class="modal-content care-modal">
+                <span class="close">&times;</span>
+                <img id="careModalImg" src="" alt="">
+                <h2 id="careModalName"></h2>
+                <div class="care-detail">
+                    <div class="care-item">
+                        <span class="care-label">💧 浇水</span>
+                        <span id="careWater"></span>
+                    </div>
+                    <div class="care-item">
+                        <span class="care-label">☀️ 光照</span>
+                        <span id="careLight"></span>
+                    </div>
+                    <div class="care-item">
+                        <span class="care-label">🌡️ 温度</span>
+                        <span id="careTemp"></span>
+                    </div>
+                    <div class="care-item">
+                        <span class="care-label">🌱 施肥</span>
+                        <span id="careFert"></span>
+                    </div>
+                    <div class="care-item">
+                        <span class="care-label">💬 小贴士</span>
+                        <span id="careTips"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div id="modalTags"></div>
+        </div>
+    </div>
+    <section id="about" class="about-section-simple" style="max-width: 1200px;margin: 50px auto;padding: 20px">
+            <div class="container">
+                <h2 class="section-title">关于我们</h2>
+                <div class="about-content-simple">
+                    <div class="about-text-simple">
+                        <p>欢迎来到<span class="highlight">鲜花科普网</span>，您身边的鲜花知识专家！</p>
+                        <p>我们致力于为您提供最全面、最有趣的鲜花科普内容，让您在欣赏鲜花美丽的同时，深入了解它们的生长习性、文化内涵和养护技巧。</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <img src="/images/icon/icon1.png" alt="丰富的鲜花品种库" class="icon-image">
+                                </div>
+                                <div class="feature-text">丰富的鲜花品种库</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <img src="/images/icon/icon2.png" alt="专业的科普知识" class="icon-image">
+                                </div>
+                                <div class="feature-text">专业的科普知识</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <img src="/images/icon/icon4.png" alt="有趣的互动测试" class="icon-image">
+                                </div>
+                                <div class="feature-text">有趣的互动测试</div>
+                            </div>
+                        </div>
+                        <p>无论您是鲜花爱好者、园艺新手还是专业人士，都能在这里找到您需要的信息。让我们一起探索鲜花的奇妙世界，感受大自然的美好馈赠！</p>
+                    </div>
+                    <div class="about-image-simple">
+                        <img src="/images/meigui.jpg" alt="鲜花科普网" class="about-main-image" id="mainImage">
+                        <div class="about-gallery">
+                            <img src="/images/haitang.jpg" alt="海棠" class="gallery-image"
+                                data-fullsize="/images/haitang.jpg">
+                            <img src="/images/yinghua.jpg" alt="樱花" class="gallery-image"
+                                data-fullsize="/images/yinghua.jpg">
+                            <img src="/images/fengxinzi.png" alt="风信子" class="gallery-image"
+                                data-fullsize="/images/fengxinzi.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section id="contact" class="contact-section" style="max-width: 1200px;margin: 50px auto;padding: 20px">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon5.png" alt="邮箱" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>邮箱</h3>
+                                <p>contact@flowerworld.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon6.png" alt="电话" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>电话</h3>
+                                <p>123-4567-8910</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon7.png" alt="地址" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>地址</h3>
+                                <p>北京市朝阳区花卉大道123号</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <img src="/images/icon/icon8.png" alt="网站" class="contact-icon-image">
+                            </div>
+                            <div class="contact-details">
+                                <h3>网站</h3>
+                                <p>www.flowerworld.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>发送消息</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">主题</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">发送消息</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <script src="js/care.js"></script>
+</body>
+</html>
